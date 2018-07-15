@@ -5,6 +5,37 @@ Simply, download the repository [https://dieepak.github.io/php7.2-apache-mysql-m
 Ensure the webserver config on `.docker/config/apache-config` is correct for your project. e.g. `public/index.php` on generic apps.
 
 Note: you may place the files elsewhere in your project. Make sure you modify the locations for the php-fpm dockerfile, the php.ini overrides and apache config on `.docker/config` if you do so.
+
+## Update environment setting in `.env` ##
+
+`COMPOSE_APP_NAME=php-docker`
+
+`COMPOSE_APP_WORKING_DIR=/var/www/html`
+
+`MYSQL_ROOT_PASSWORD=root`
+
+`MYSQL_DATABASE=demo`
+
+`MYSQL_USER=demo`
+
+`MYSQL_PASSWORD=demo`
+
+
+## Update apache setting in `Dockerfile`  ##
+
+  `ENV APACHE_RUN_USER www-data`
+
+  `ENV APACHE_RUN_GROUP www-data`
+
+  `ENV APACHE_LOG_DIR /var/log/apache2`
+
+  `ENV APACHE_LOCK_DIR /var/lock/apache2`
+
+  `ENV APACHE_PID_FILE /var/run/apache2.pid`
+
+  `ENV APPLICATION_DOCUMENT_ROOT /var/www/html/public`
+
+
  
 # How to run #
 
@@ -14,6 +45,8 @@ Dependencies:
   * Docker compose v1.12 or higher. See [docs.docker.com/compose/install](https://docs.docker.com/compose/install/)
 
 Once you're done, simply `cd` to your project and run `docker-compose up -d`. This will initialise and start all the containers, then leave them running in the background.
+
+![](https://dieepak.github.io/assets/php-mysql-mongo-redis.png)
 
 ## Services exposed outside your environment ##
 
