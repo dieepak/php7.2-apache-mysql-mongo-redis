@@ -1,0 +1,68 @@
+version: "3.1"
+services:
+
+    redis:
+      image: redis:alpine
+      restart: "always"
+      container_name: ${COMPOSE_APP_NAME}-redis
+      ports:
+        - "6379:6379"
+      networks:
+        - backend
+
+    mysql:
+      image: mysql:5.7
+      restart: "always"
+      container_name: ${COMPOSE_APP_NAME}-mysql
+      working_dir: ${COMPOSE_APP_WORKING_DIR}
+      volumes:
+        - .:${COMPOSE_APP_WORKING_DIR}
+      environment:
+        - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+        - MYSQL_DATABASE=${MYSQL_DATABASE}
+        - MYSQL_USER=${MYSQL_USER}
+        - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      ports:
+        - "3306:3306"
+      networks:
+          - frontend
+          - backend
+
+    mongodb:
+        image: mongo
+        restart: "always"
+        container_name: ${COMPOSE_APP_NAME}-mongodb
+        volumes:
+            - .:${COMPOSE_APP_WORKING_DIR}
+        ports:
+            - '27017:27017'
+        networks:
+            - backend
+
+    php:
+      build: .docker/
+      restart: "always"
+      container_name: ${COMPOSE_APP_NAME}-php-fpm
+      volumes:
+        - .:${COMPOSE_APP_WORKING_DIR}:cached
+      ports:
+        - 8080:80
+        - 8081:443
+      links:
+        - mysql:mysql
+        - redis:redis
+        - mongodb:mongodb   
+      networks:
+        - frontend
+        - backend
+
+volumes:  
+  data-mysql:
+    driver: local
+    
+networks:  
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge 
+
