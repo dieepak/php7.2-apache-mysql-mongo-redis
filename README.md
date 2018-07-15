@@ -1,6 +1,6 @@
 # Add to your project #
 
-Simply, download the repository [https://dieepak.github.io/php7.2-apache-mysql-mongo-redis/](https://dieepak.github.io/php7.2-apache-mysql-mongo-redis/)
+Simply, download the repository [https://dieepak.github.io/php7.2-apache-mysql-mongo-redis/](php7.2-apache-mysql-mongo-redis)
 
 Ensure the webserver config on `.docker/config/apache-config` is correct for your project. e.g. `public/index.php` on generic apps.
 
@@ -55,5 +55,3 @@ It's hard to avoid file permission issues when fiddling about with containers du
 
   * Run composer outside of the php container, as doing so would install all your dependencies owned by `root` within your vendor folder.
   * Run commands (ie Symfony's console, or Laravel's artisan) straight inside of your container. You can easily open a shell as described above and do your thing from there.
-
-URL: https://dieepak.github.io/php7.2-apache-mysql-mongo-redis/
