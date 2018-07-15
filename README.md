@@ -1,10 +1,10 @@
 # Add to your project #
 
-Simply, unzip the file into your project, this will create `docker-compose.yml` on the root of your project and a folder named `phpdocker` containing nginx and php-fpm config for it.
+Simply, download the repository `https://dieepak.github.io/php7.2-apache-mysql-mongo-redis/`
 
-Ensure the webserver config on `.docker\config\apache-config` is correct for your project. e.g. `public/index.php` on generic apps.
+Ensure the webserver config on `.docker/config/apache-config` is correct for your project. e.g. `public/index.php` on generic apps.
 
-Note: you may place the files elsewhere in your project. Make sure you modify the locations for the php-fpm dockerfile, the php.ini overrides and nginx config on `docker-compose.yml` if you do so.
+Note: you may place the files elsewhere in your project. Make sure you modify the locations for the php-fpm dockerfile, the php.ini overrides and apache config on `.docker/config` if you do so.
  
 # How to run #
 
@@ -17,7 +17,7 @@ Once you're done, simply `cd` to your project and run `docker-compose up -d`. Th
 
 ## Services exposed outside your environment ##
 
-You can access your application via **`localhost`**, if you're running the containers directly, or through **``** when run on a vm. nginx and mailhog both respond to any hostname, in case you want to add your own hostname on your `/etc/hosts` 
+You can access your application via **`localhost`**, if you're running the containers directly, Change the hostname in case you want to add your own hostname on your `/etc/hosts` 
 
 
 Service    |  Address outside containers
@@ -55,3 +55,5 @@ It's hard to avoid file permission issues when fiddling about with containers du
 
   * Run composer outside of the php container, as doing so would install all your dependencies owned by `root` within your vendor folder.
   * Run commands (ie Symfony's console, or Laravel's artisan) straight inside of your container. You can easily open a shell as described above and do your thing from there.
+
+URL: https://dieepak.github.io/php7.2-apache-mysql-mongo-redis/
