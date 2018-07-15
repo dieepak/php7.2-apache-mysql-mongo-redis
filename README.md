@@ -1,6 +1,6 @@
 # Add to your project #
 
-Simply, download the repository `https://dieepak.github.io/php7.2-apache-mysql-mongo-redis/`
+Simply, download the repository [https://dieepak.github.io/php7.2-apache-mysql-mongo-redis/](https://dieepak.github.io/php7.2-apache-mysql-mongo-redis/)
 
 Ensure the webserver config on `.docker/config/apache-config` is correct for your project. e.g. `public/index.php` on generic apps.
 
