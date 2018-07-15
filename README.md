@@ -1,6 +1,3 @@
-PHPDocker.io generated environment
-==================================
-
 # Add to your project #
 
 Simply, unzip the file into your project, this will create `docker-compose.yml` on the root of your project and a folder named `phpdocker` containing nginx and php-fpm config for it.
